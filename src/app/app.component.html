@@ -1,5 +1,5 @@
 <div class="container">
-  <app-header></app-header>
+  <app-header [title] = "appTitle"></app-header>
   <app-navbar></app-navbar>
 
   <router-outlet>
@@ -12,6 +12,6 @@
     <app-statistics class="col-lg-4"></app-statistics>
   </div>
 
-  <app-footer></app-footer>
+  <app-footer [author]="author" [company]="company"></app-footer>
 </div>
 

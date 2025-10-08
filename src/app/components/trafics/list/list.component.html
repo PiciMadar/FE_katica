@@ -14,10 +14,24 @@
             <th class="text-end">Nettó ár</th>
             <th class="text-end">Mennyiség</th>
             <th class="text-end">Kiadva</th>
+            <th>Műveletek</th>
         </tr>
     </thead>
-    <tbody>
-
+    <tbody class="table-group-divider">
+        <tr *ngFor="let trafic of trafics; index as i;">
+            <td> {{ i+ 1}}</td>
+            <td> {{ trafic.termek }} </td>
+            <td> {{ trafic.vevo }} </td>
+            <td class="text-end"> {{ trafic.kategoriaId }} </td>
+            <td> {{ trafic.egyseg }} </td>
+            <td class="text-end"> {{ trafic.nettoar }} </td>
+            <td class="text-end"> {{ trafic.mennyiseg }} </td>
+            <td class="text-end"> {{ trafic.kiadva ? 'Kiadva' : 'Folyamatban'}} </td>
+            <td>
+                <button class="btn btn-sm btn-warning me-2">🕕</button>
+                <button class="btn btn-sm btn-danger">🕖</button>
+            </td>
+        </tr>
     </tbody>
     <tfoot>
         <th colspan="8" class="text-center">Összesen: <span>0</span></th>
