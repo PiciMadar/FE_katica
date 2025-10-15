@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from "@angular/common";
 import { Category  } from '../../../interfaces/category';
-import axios, { AxiosError } from 'axios';
+import { ApiService } from '../../../services/api.service';
+import { apiRES } from '../../../interfaces/apiRES';
 
 
 
@@ -16,17 +17,24 @@ import axios, { AxiosError } from 'axios';
   styleUrl: './list.component.scss'
 })
 export class CListComponent  implements OnInit {
+
+
+  constructor(private api:ApiService)
+  {
+
+  }
   categories: Category[] = [];
 
   async ngOnInit(){
-    try{
-      const rsp = await axios.get('http://localhost:3000/categories')
-      this.categories = rsp.data;
-      console.log(this.categories)
+    this.api.selectAll('categories').then((res:apiRES) =>{
+      if(res.status == 200){
+        this.categories = res.data;
     }
-    catch(err_){
-      alert("Hiba: " + err_)
+    else{
+      alert(res.message)
     }
+    })
+    
   }
 
 }

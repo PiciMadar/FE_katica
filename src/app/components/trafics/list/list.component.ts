@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from "@angular/common";
 import { Trafic } from '../../../interfaces/trafic';
-import axios, { AxiosError } from 'axios';
+import { ApiService } from '../../../services/api.service';
+import { apiRES } from '../../../interfaces/apiRES';
 
 
 
@@ -14,17 +15,19 @@ import axios, { AxiosError } from 'axios';
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
-export class TListComponent implements OnInit{
-    trafics: Trafic[] = [];
+export class TListComponent{
+  constructor(private api: ApiService){}
+  
+  trafics: Trafic[] = [];
 
-    async ngOnInit(){
-      try{
-        const rsp = await axios.get('http://localhost:3000/trafics')
-        this.trafics = rsp.data;
-        console.log(this.trafics)
+  async ngOnInit(){
+    this.api.selectAll('trafics').then((res:apiRES) =>{
+      if(res.status == 200){
+          this.trafics = res.data;
       }
-      catch(err_){
-        alert("Hiba: " + err_)
+      else{
+        alert(res.message)
       }
-    }
+    });
+  }  
 }
