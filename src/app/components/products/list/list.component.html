@@ -8,16 +8,24 @@
         <tr>
             <th>#</th>
             <th>Termék</th>
-            <th>Vevő</th>
-            <th>Kategória</th>
-            <th class="text-end">Egység</th>
-            <th class="text-end">Nettó ár</th>
-            <th class="text-end">Mennyiség</th>
-            <th class="text-end">Kiadva</th>
+            <th>Kategória név</th>
+            <th>Egység</th>
+            <th>Nettó ár</th>
+            <th>Műveletek</th>
         </tr>
     </thead>
     <tbody>
-
+        <tr *ngFor="let product of Products">
+            <td>{{product.termekID}}</td>
+            <td>{{product.termek}}</td>
+            <td>{{product.katergoriaNev}}</td>
+            <td>{{product.egyseg}}</td>
+            <td>{{product.nettoAr}}</td>
+            <td>
+                <button class="btn btn-sm btn-warning me-2" routerLink="//{{product.termekID}}">🕕</button>
+                <button class="btn btn-sm btn-danger" (click)="delete(product.termekID)">🕖</button>
+            </td>
+        </tr>
     </tbody>
     <tfoot>
         <th colspan="8" class="text-center">Összesen: <span>0</span></th>

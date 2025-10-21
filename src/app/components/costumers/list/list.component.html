@@ -7,17 +7,19 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Termék</th>
-            <th>Vevő</th>
-            <th>Kategória</th>
-            <th class="text-end">Egység</th>
-            <th class="text-end">Nettó ár</th>
-            <th class="text-end">Mennyiség</th>
-            <th class="text-end">Kiadva</th>
+            <th>Vevő neve</th>
+            <th>Műveletek</th>
         </tr>
     </thead>
     <tbody>
-
+        <tr *ngFor="let customer of Customers">
+            <td>{{customer.vevoID}}</td>
+            <td>{{customer.vevoNev}}</td>
+            <td>
+                <button class="btn btn-sm btn-warning me-2" routerLink="/costumers/{{customer.vevoID}}">🕕</button>
+                <button class="btn btn-sm btn-danger" (click)="delete(customer.vevoID)">🕖</button>
+            </td>
+        </tr>
     </tbody>
     <tfoot>
         <th colspan="8" class="text-center">Összesen: <span>0</span></th>

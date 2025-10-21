@@ -1,17 +1,20 @@
-<div class="container">
-  <app-header [title] = "appTitle"></app-header>
-  <app-navbar></app-navbar>
 
-  <router-outlet>
-
-  </router-outlet>
-  <div class="row py-3">
-    <div  class="col-lg-8">
-      <router-outlet></router-outlet>
+  <div class="container">
+    <app-header [title] = "appTitle"></app-header>
+    <app-navbar></app-navbar>
+  
+    <router-outlet>
+  
+    </router-outlet>
+    <div class="row py-3">
+      <div  class="col-lg-8">
+        <router-outlet></router-outlet>
+      </div>
+      <app-statistics class="col-lg-4"></app-statistics>
     </div>
-    <app-statistics class="col-lg-4"></app-statistics>
+  
+    <app-footer [author]="author" [company]="company"></app-footer>
   </div>
 
-  <app-footer [author]="author" [company]="company"></app-footer>
-</div>
+
 

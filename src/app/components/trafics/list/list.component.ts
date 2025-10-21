@@ -20,7 +20,11 @@ export class TListComponent{
   
   trafics: Trafic[] = [];
 
-  async ngOnInit(){
+
+ async ngOnInit(){
+    this.getAllTrafics();
+  }  
+  getAllTrafics(){
     this.api.selectAll('trafics').then((res:apiRES) =>{
       if(res.status == 200){
           this.trafics = res.data;
@@ -29,5 +33,22 @@ export class TListComponent{
         alert(res.message)
       }
     });
-  }  
+  }
+  delete(id:number){
+    if(window.confirm("Biztosan törölni szeretnéd ezt a traficot?")){
+      this.api.delete('trafics', id).then((res:apiRES) =>{
+        if(res.status == 200){
+          alert(res.message);
+          this.getAllTrafics()
+        }
+        else
+        {
+          alert(res.message)
+        }
+      })
+    }
+  }
+
+
+
 }

@@ -26,6 +26,9 @@ export class CListComponent  implements OnInit {
   categories: Category[] = [];
 
   async ngOnInit(){
+    this.getAllCategories()
+  }
+  getAllCategories(){
     this.api.selectAll('categories').then((res:apiRES) =>{
       if(res.status == 200){
         this.categories = res.data;
@@ -34,7 +37,20 @@ export class CListComponent  implements OnInit {
       alert(res.message)
     }
     })
-    
   }
 
+    delete(id:number){
+      if(window.confirm("Biztosan törölni szeretnéd ezt a kategóriát?")){
+        this.api.delete('categories', id).then((res:apiRES) =>{
+          if(res.status == 200){
+            alert(res.message);
+            this.getAllCategories()
+          }
+          else
+          {
+            alert(res.message)
+          }
+        })
+      }
+    }
 }

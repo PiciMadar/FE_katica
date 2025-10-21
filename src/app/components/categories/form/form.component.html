@@ -1,7 +1,12 @@
+
+<h5 *ngIf="!this.id">Új kategória</h5>
+<h5 *ngIf="this.id">Kategória módosítás</h5>
+
 <div class="form-floating mb-3">
-    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-    <label for="floatingInput">Email address</label>
+    <input type="email" class="form-control" id="floatingInput" placeholder="" [(ngModel)] = "newCategory.kategoriaNev">
+    <label for="floatingInput">Kategória név</label>
 </div>
+<p>{{newCategory.kategoriaNev}}</p>
 
 
-<button type="button" class="btn btn-primary" routerLink="/traficform">új adat rögzítés</button>
+<button type="button" class="btn btn-primary" (click)="save()">új adat rögzítés</button>

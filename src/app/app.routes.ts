@@ -25,11 +25,24 @@ export const routes: Routes = [
     }
     ,
     {
+        path:'traficform/:id',
+        component: TraFormComponent
+    }
+    ,
+    {
         path:'catform',
         component: CatFormComponent
     },
     {
+        path:'catform/:id',
+        component: CatFormComponent
+    },
+    {
         path:'costumers',
+        component: CostumerComponent
+    },
+    {
+        path:'costumers/:vevoId',
         component: CostumerComponent
     },
     {
@@ -40,6 +53,7 @@ export const routes: Routes = [
         path:'products',
         component: ProductsComponent
     },
+
     {
         path: 'productsList',
         component: ProListComponent
@@ -51,5 +65,5 @@ export const routes: Routes = [
     {
         path: 'pricingList',
         component: PriListComponent
-    }
+    },
 ];

@@ -65,7 +65,7 @@ export class ApiService {
   //UPDATE record from 'table'
   async update(table:string, id: number, data:any){
     try{
-      const response = await axios.patch(`${this.SERVER}/${table}`,data);
+      const response = await axios.patch(`${this.SERVER}/${table}/${id}`,data);
       return{
         status:200,
         message: 'A rekord módosítva!',
@@ -83,7 +83,7 @@ export class ApiService {
   //DELETE ONE record from 'table by id
   async delete(table:string, id:number){
     try{
-      const response = await axios.delete(`${this.SERVER}/${table}`);
+      const response = await axios.delete(`${this.SERVER}/${table}/${id}`);
       return{
         status:200,
         message: "A rekord szakot váltott"

@@ -17,12 +17,12 @@
             <td> {{ i+ 1}}</td>
             <td> {{ category.kategoriaNev }} </td>
             <td>
-                <button class="btn btn-sm btn-warning">🕕</button>
-                <button class="btn btn-sm btn-danger text-end">🕖</button>
+                <button class="btn btn-sm btn-warning" routerLink="/catform/{{category.id}}">🕕</button>
+                <button class="btn btn-sm btn-danger text-end" (click)="delete(category.id)">🕖</button>
             </td>
         </tr>
     </tbody>
     <tfoot>
-        <th colspan="8" class="text-center">Összesen: <span>0</span></th>
+        <th colspan="8" class="text-center">Összesen: <span>{{categories.length}}</span></th>
     </tfoot>
 </table>
